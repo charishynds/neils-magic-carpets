@@ -4,13 +4,13 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 
 const testimonials = [
-  { name: "Sarah M.", location: "Bromley", text: "Neil fitted our whole downstairs — hall, lounge and dining room. Absolutely immaculate finish. Would recommend without hesitation." },
+  { name: "Sarah M.", location: "Bromley", text: "Neil fitted our whole downstairs - hall, lounge and dining room. Absolutely immaculate finish. Would recommend without hesitation." },
   { name: "James T.", location: "Greenwich", text: "Called Neil on a recommendation from a neighbour. He transformed our bedroom in a day. Couldn't be happier with the result." },
   { name: "Karen L.", location: "Croydon", text: "Professional, tidy, and competitively priced. Neil's been doing our rentals for years. Always first class." },
-  { name: "David R.", location: "Richmond", text: "Had the vinyl done in the kitchen and bathroom. Looks incredible — like a different house. Really top quality work." },
+  { name: "David R.", location: "Richmond", text: "Had the vinyl done in the kitchen and bathroom. Looks incredible - like a different house. Really top quality work." },
   { name: "Michelle B.", location: "Sutton", text: "Got Neil's number from a friend and I'm so glad I did. Turned up on time, job done perfectly, not a mark left behind." },
   { name: "Paul H.", location: "Guildford", text: "Commercial fit-out for our office. Completed on time and on budget. Staff love the new carpet. Professional from start to finish." },
-  { name: "Angela S.", location: "Kingston", text: "We've used Neil three times now — stairs, landing, and two bedrooms. Every time, perfect. Won't use anyone else." },
+  { name: "Angela S.", location: "Kingston", text: "We've used Neil three times now - stairs, landing, and two bedrooms. Every time, perfect. Won't use anyone else." },
   { name: "Tom W.", location: "Sevenoaks", text: "The vinyl Neil laid in our new kitchen looks absolutely stunning. Quality of work is second to none. Highly recommend." },
 ];
 

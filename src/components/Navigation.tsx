@@ -34,11 +34,13 @@ export default function Navigation() {
       >
         <div className="container-content flex items-center justify-between h-16 lg:h-20">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center">
-            <img
-              src={scrolled ? "/neilsmagiccarpets-logo-black-transparent.png" : "/neilsmagiccarpets-logo-white-transparent.png"}
-              alt="Neil's Magic Carpets"
-              className="h-9 lg:h-11 w-auto transition-opacity duration-300"
-            />
+            {scrolled && (
+              <img
+                src="/neilsmagiccarpets-logo-black-transparent.png"
+                alt="Neil's Magic Carpets"
+                className="h-9 lg:h-11 w-auto"
+              />
+            )}
           </a>
 
           <nav className="hidden nav:flex items-center gap-10">

@@ -71,7 +71,7 @@ export default function Contact() {
           <span className="text-green text-xs font-medium tracking-[0.3em] uppercase block mb-4">Get in Touch</span>
           <h2 className="font-display text-4xl lg:text-5xl font-medium text-gray-900">Request a Quote</h2>
           <p className="mt-4 text-gray-500 text-lg max-w-xl">
-            The quickest way to reach Neil is directly by phone or WhatsApp — he'll get back to you personally.
+            The quickest way to reach Neil is directly by phone or WhatsApp - he'll get back to you personally.
           </p>
         </AnimateIn>
 
@@ -99,10 +99,10 @@ export default function Contact() {
 
         {/* Supporting info */}
         <AnimateIn delay={0.1} className="mb-16">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-400 mb-8">
             <span className="flex items-center gap-2">
               <MapPin size={14} className="text-rose" />
-              London &amp; the South East
+              Forest Hill, London &nbsp;·&nbsp; Serving London &amp; the South East
             </span>
             <span>Free, no-obligation quotes</span>
             {googleRating && (
@@ -115,6 +115,21 @@ export default function Contact() {
                 {displayRating.toFixed(1)} on Google ({googleRating.total_ratings} reviews)
               </span>
             )}
+          </div>
+          <div className="flex items-start gap-10 text-sm">
+            <div>
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Business Hours</p>
+              <div className="space-y-1.5 text-gray-600">
+                <div className="flex gap-6 justify-between">
+                  <span>Mon - Sat</span>
+                  <span>8:00 am - 5:00 pm</span>
+                </div>
+                <div className="flex gap-6 justify-between">
+                  <span>Sunday</span>
+                  <span className="text-gray-400">Closed</span>
+                </div>
+              </div>
+            </div>
           </div>
         </AnimateIn>
 
@@ -167,7 +182,7 @@ export default function Contact() {
                       <textarea
                         {...register("message")}
                         rows={4}
-                        placeholder="Tell Neil about your project — e.g. 'I need a lounge and hallway carpeted, roughly 30m²'"
+                        placeholder="Tell Neil about your project - e.g. 'I need a lounge and hallway carpeted, roughly 30m²'"
                         className={`${inputClass} resize-none`}
                       />
                       {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}

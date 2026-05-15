@@ -5,7 +5,7 @@ const services = [
     num: "01",
     title: "Carpet Fitting",
     description:
-      "Personal service carpet installation to the highest standard. From measuring and ordering the carpet through to immaculate fitting — every room, every style.",
+      "Personal service carpet installation to the highest standard. From measuring and ordering the carpet through to immaculate fitting - every room, every style.",
     detail: "Domestic & commercial",
     image: null,
   },
@@ -13,7 +13,7 @@ const services = [
     num: "02",
     title: "Vinyl Laying",
     description:
-      "Durable, stylish vinyl flooring expertly laid for any space. Waterproof, practical, and beautifully finished — kitchens, bathrooms, hallways and more.",
+      "Durable, stylish vinyl flooring expertly laid for any space. Waterproof, practical, and beautifully finished - kitchens, bathrooms, hallways and more.",
     detail: "All room types",
     image: "/gallery/IMG_4933.JPG",
   },

@@ -3,7 +3,7 @@ import AnimateIn from "./AnimateIn";
 const stats = [
   { value: "20+", label: "Years experience" },
   { value: "100%", label: "Word of mouth" },
-  { value: "1", label: "Man — always Neil" },
+  { value: "1", label: "Man - always Neil" },
 ];
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
         <AnimateIn direction="left" className="relative min-h-[400px] lg:min-h-0 order-2 lg:order-1">
           <img
             src="/portrait_neil.JPEG"
-            alt="Neil — carpet and vinyl specialist"
+            alt="Neil - carpet and vinyl specialist"
             className="w-full h-full object-cover object-top"
             style={{ filter: "sepia(15%) contrast(1.05)" }}
           />
@@ -29,7 +29,7 @@ export default function About() {
             </h2>
             <div className="w-12 h-px bg-rose mb-8" />
             <p className="text-white/80 leading-relaxed text-lg mb-5">
-              Neil has been fitting carpets and vinyl for over 20 years — not because it's just a job, but because he genuinely takes pride in every room he finishes.
+              Neil has been fitting carpets and vinyl for over 20 years - not because it's just a job, but because he genuinely takes pride in every room he finishes.
             </p>
             <p className="text-white/80 leading-relaxed text-lg mb-10">
               Based in London, Neil works across the South East fitting for families, landlords, and small businesses. Every job gets the same care. He'll measure up himself, help you pick the right material, and won't leave until it's right.

@@ -22,6 +22,7 @@ export default function Footer() {
               alt="Neil's Magic Carpets"
               className="h-12 w-auto mb-4"
             />
+            <p className="font-display text-xl text-white mb-3">Neil's Magic Carpets</p>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Carpet and vinyl flooring specialists serving London and the South East for over 20 years.
             </p>
