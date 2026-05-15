@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "Work", href: "#gallery" },
+  { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -34,7 +35,7 @@ export default function Navigation() {
         <div className="container-content flex items-center justify-between h-16 lg:h-20">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center">
             <img
-              src={scrolled ? "/neilsmagiccarpets-logo.png" : "/neilsmagiccarpets-logo-white-transparent.png"}
+              src={scrolled ? "/neilsmagiccarpets-logo-black-transparent.png" : "/neilsmagiccarpets-logo-white-transparent.png"}
               alt="Neil's Magic Carpets"
               className="h-9 lg:h-11 w-auto transition-opacity duration-300"
             />
@@ -62,7 +63,7 @@ export default function Navigation() {
                   : "border-white text-white hover:bg-white hover:text-green"
               }`}
             >
-              Get a Quote
+              Get in Touch
             </button>
           </nav>
 
@@ -111,7 +112,7 @@ export default function Navigation() {
                 onClick={() => handleNavClick("#contact")}
                 className="mt-4 text-white border border-white/40 px-8 py-3 text-sm font-medium tracking-wide hover:bg-white hover:text-green transition-colors"
               >
-                Get a Quote
+                Get in Touch
               </motion.button>
             </nav>
           </motion.div>

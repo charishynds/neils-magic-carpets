@@ -25,7 +25,7 @@ export default function Hero() {
           <img
             src="/neilsmagiccarpets-logo-white-transparent.png"
             alt="Neil's Magic Carpets"
-            className="h-16 lg:h-20 w-auto"
+            className="h-24 lg:h-32 w-auto"
           />
         </motion.div>
 
@@ -36,11 +36,11 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
             className="text-rose text-xs font-medium tracking-[0.3em] uppercase"
           >
-            Carpet &amp; Vinyl Specialists &nbsp;·&nbsp; London &amp; South East
+            Carpet &amp; Vinyl Specialists &nbsp;·<br className="sm:hidden" /> London &amp; South East
           </motion.p>
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden pb-4">
           <motion.h1
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
