@@ -1,6 +1,6 @@
 # Repo Admin Checklist
 
-Living task, owner-action, and launch checklist for Neil's Magic Carpets (premium redesign — neils-magic-carpets-1).
+Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-magic-carpets).
 
 ## Current Project State
 
@@ -15,12 +15,12 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] `robots.txt` present.
 - [x] `sitemap.xml` present.
 - [x] Service area confirmed as London and the South East.
-- [x] Local branch is `main` and `origin` points at `https://github.com/charishynds/neils-magic-carpets-1.git`.
+- [x] Local branch is `main` and `origin` points at `https://github.com/charishynds/neils-magic-carpets.git`.
 - [x] Twitter Card meta tags added to `index.html`.
 - [x] `vercel.json` added with security headers and SPA fallback.
 - [ ] ESLint not fully set up — `lint` script exists in `package.json` but `eslint` is not in devDependencies and no config file is present. Add `eslint` and a config before relying on `npm run lint`.
 - [ ] Local lint, build, and typecheck checks not yet run on this repo. Run and confirm passing before first PR.
-- [ ] Confirm the Supabase project to use for the new site. The old site used project `fxraygkweckkxkfxfrsh` — confirm whether to reuse or create a new project in the Supabase dashboard.
+- [x] Supabase project confirmed: new project created in your existing Supabase org — see Supabase section for next steps.
 
 ## Development Workflow
 
@@ -35,30 +35,40 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] `.env` and `.env.*` are ignored (confirmed in `.gitignore`).
 - [x] `.env.example` is tracked with safe placeholders.
 - [x] Frontend Supabase variable names documented: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`.
-- [ ] Confirm Vercel Preview environment variables are configured.
-- [ ] Confirm Vercel Production environment variables are configured.
-- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp and Google Places when those functions are deployed.
+- [x] Confirm Vercel Preview environment variables are configured.
+- [x] Confirm Vercel Production environment variables are configured.
+- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp when that function is deployed (Google Places secrets already set).
+
+## Infrastructure
+
+- [ ] Confirm Vercel account is on Pro plan (required for commercial use — Hobby is personal-only).
+- [x] Supabase: Neil's project and Moxify both sit in your Supabase org — free tier covers both (2 active projects max).
+- [ ] Supabase keep-alive ping: add a Vercel cron (`api/ping.ts` + `vercel.json` crons) to this project once Supabase is live. Prevents free-tier pausing. A `SELECT 1` every 6 days — read-only, no data written, no notifications triggered.
+- [ ] Third client site (future): have that client create their own Supabase org and add you as admin — their free tier is separate from yours. This is standard agency practice, not a ToS workaround.
+- [x] Sanity CMS free tier covers both sites that need it (10,000 docs, 100 GB bandwidth, 20 seats per project). No upgrade needed until those limits are approached.
 
 ## Supabase
 
-- [ ] Confirm which Supabase project to link for this site (new project or reuse existing).
+- [x] Create new Supabase project in your org via the dashboard — project ref `fxraygkweckkxkfxfrsh`.
+- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Production and Preview).
+- [x] Link repo to Supabase project: `supabase link --project-ref fxraygkweckkxkfxfrsh`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
 - [ ] Confirm database constraints match front-end validation (react-hook-form + zod).
 - [x] Google Rating Badge: Google Place ID confirmed — `ChIJxxYBUDOyUGQRPTrKTXzsZls` (verified: 5.0 rating, 9 reviews, phone 07984 147403 matches). Uses Places API (New) — SAB with hidden address, not findable via legacy Places API.
 - [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
-- [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
+- [x] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
 - [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
-- [ ] Google Rating Badge: deploy `get-google-rating` — link Supabase project first, then `supabase functions deploy get-google-rating`.
-- [ ] Confirm Preview and Production environments use the intended Supabase project.
+- [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh`.
+- [x] Confirm Preview and Production environments use the intended Supabase project (`fxraygkweckkxkfxfrsh`).
 
 ## Vercel And Hosting
 
 - [x] `vercel.json` added with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) and SPA fallback rewrite.
-- [ ] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets-1.git`.
-- [ ] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
-- [ ] Confirm production deploys come from merges to `main`.
+- [x] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets.git`.
+- [x] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
+- [x] Confirm production deploys come from merges to `main` — production branch set to `main` in Vercel Settings → Git.
 - [ ] Confirm the hosting plan permits commercial client use.
 - [ ] Confirm deployed response headers on the Vercel preview URL using securityheaders.com.
 - [ ] Re-confirm deployed response headers on the live production URL after DNS cutover.
@@ -67,7 +77,8 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 
 - [x] Page title and meta description present.
 - [x] Open Graph and Twitter metadata present (Open Graph only — Twitter Card tags still missing).
-- [x] Favicon present.
+- [x] Favicon present (`neils_magic_carpets_favicon.svg`).
+- [ ] Favicon review — confirm the current SVG favicon looks correct in browser tabs and bookmarks on both light and dark OS themes. Update if Neil supplies a new brand asset.
 - [x] `robots.txt` present.
 - [x] `sitemap.xml` present for the confirmed production domain.
 - [x] Canonical URL present.
@@ -79,6 +90,14 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] LocalBusiness structured data (Schema.org JSON-LD) added to `index.html` — name, phone, address (Forest Hill SE23), service area, and opening hours.
 - [ ] OG image review — currently `hero.JPG` via production domain URL. Confirm this is the right social share image (ideal 1200×630px). May need a purpose-made card with logo and business name.
 - [ ] Google Business Profile — claim and optimise Neil's listing.
+
+## Social Media
+
+- [ ] **Instagram** — update profile photo, bio, and website link to match the new site. Confirm tone and description are consistent with the new copy.
+- [ ] **Facebook** — update cover photo, profile photo, about text, and website URL. Check that the page category and services listed are accurate.
+- [ ] **Nextdoor** — update business profile photo, description, and website link.
+- [ ] **Google Business Profile** — update photos (interior/exterior/work examples), business description, website URL, and confirm opening hours and service area are correct.
+- [ ] Cross-check all profiles: phone number, service area (London and South East), and branding are consistent across Instagram, Facebook, Nextdoor, and Google.
 
 ## Visual And Functional QA
 

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { MessageCircle, Phone, MapPin, Send, Star, ChevronDown, Mail } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useGoogleRating } from "@/hooks/use-google-rating";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimateIn from "./AnimateIn";
 
@@ -24,16 +25,10 @@ type FormData = z.infer<typeof schema>;
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const [googleRating, setGoogleRating] = useState<{ rating: number; total_ratings: number } | null>(null);
+  const googleRating = useGoogleRating();
   const { toast } = useToast();
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
-
-  useEffect(() => {
-    supabase.functions.invoke("get-google-rating")
-      .then(({ data, error }) => { if (!error && data) setGoogleRating(data); })
-      .catch(() => {});
-  }, []);
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
@@ -60,7 +55,6 @@ export default function Contact() {
     }
   };
 
-  const displayRating = googleRating?.rating ?? 5.0;
 
   const inputClass = "w-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-green transition-colors";
 
@@ -105,16 +99,16 @@ export default function Contact() {
               Forest Hill, London &nbsp;·&nbsp; Serving London &amp; the South East
             </span>
             <span>Free, no-obligation quotes</span>
-            <span className="flex items-center gap-1.5 lg:basis-full">
+            {googleRating && (
+              <span className="flex items-center gap-1.5 lg:basis-full">
                 <div className="flex gap-0.5">
                   {[1,2,3,4,5].map((s) => (
-                    <Star key={s} size={12} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
+                    <Star key={s} size={12} className={s <= Math.round(googleRating.rating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
                   ))}
                 </div>
-                {googleRating
-                  ? `${displayRating.toFixed(1)} on Google (${googleRating.total_ratings} reviews)`
-                  : "5.0 · Google Reviews"}
+                {googleRating.rating.toFixed(1)} on Google ({googleRating.total_ratings} reviews)
               </span>
+            )}
           </div>
           <div className="flex items-start gap-10 text-sm">
             <div>
