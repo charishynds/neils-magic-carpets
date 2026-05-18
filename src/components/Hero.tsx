@@ -6,7 +6,6 @@ import { useGoogleRating } from "@/hooks/use-google-rating";
 export default function Hero() {
   const [logoDuration, setLogoDuration] = useState(1.6);
   const googleRating = useGoogleRating();
-  const displayRating = googleRating?.rating ?? 5.0;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1280px)");
@@ -65,21 +64,23 @@ export default function Hero() {
           </motion.h1>
         </div>
 
-        <div className="overflow-hidden">
-          <motion.div
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-            className="flex items-center gap-2 mt-2"
-          >
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={14} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-white/30 text-white/30"} />
-              ))}
-            </div>
-            <span className="text-white/75 text-xs font-medium tracking-wide">{displayRating.toFixed(1)} · Google Reviews</span>
-          </motion.div>
-        </div>
+        {googleRating && (
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+              className="flex items-center gap-2 mt-2"
+            >
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} size={14} className={s <= Math.round(googleRating.rating) ? "fill-rose text-rose" : "fill-white/30 text-white/30"} />
+                ))}
+              </div>
+              <span className="text-white/75 text-xs font-medium tracking-wide">{googleRating.rating.toFixed(1)} · Google Reviews</span>
+            </motion.div>
+          </div>
+        )}
       </div>
 
       <motion.button
