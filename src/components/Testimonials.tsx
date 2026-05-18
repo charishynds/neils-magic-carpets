@@ -35,19 +35,20 @@ export default function Testimonials() {
   }, [index, paused]);
 
   return (
-    <section className="section-pad bg-green-muted">
+    <section
+      id="testimonials"
+      className="section-pad bg-green-muted"
+      onPointerDown={(e) => { if (e.pointerType === 'touch') setPaused(true); }}
+      onPointerUp={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
+      onPointerCancel={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
+    >
       <div className="container-content">
         <AnimateIn className="mb-16">
           <span className="text-green text-xs font-medium tracking-[0.3em] uppercase block mb-4">Testimonials</span>
           <h2 className="font-display text-4xl lg:text-5xl font-medium text-gray-900">What customers say</h2>
         </AnimateIn>
 
-        <div
-          className="relative min-h-[260px]"
-          onPointerDown={(e) => { if (e.pointerType === 'touch') setPaused(true); }}
-          onPointerUp={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
-          onPointerCancel={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
-        >
+        <div className="relative min-h-[260px]">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={index}

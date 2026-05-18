@@ -3,6 +3,7 @@ import { Instagram } from "lucide-react";
 const navLinks = [
   { label: "Work", href: "#gallery" },
   { label: "Services", href: "#services" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
