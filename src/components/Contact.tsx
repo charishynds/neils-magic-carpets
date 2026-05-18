@@ -55,7 +55,6 @@ export default function Contact() {
     }
   };
 
-  const displayRating = googleRating?.rating ?? 5.0;
 
   const inputClass = "w-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-green transition-colors";
 
@@ -100,16 +99,16 @@ export default function Contact() {
               Forest Hill, London &nbsp;·&nbsp; Serving London &amp; the South East
             </span>
             <span>Free, no-obligation quotes</span>
-            <span className="flex items-center gap-1.5">
+            {googleRating && (
+              <span className="flex items-center gap-1.5">
                 <div className="flex gap-0.5">
                   {[1,2,3,4,5].map((s) => (
-                    <Star key={s} size={12} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
+                    <Star key={s} size={12} className={s <= Math.round(googleRating.rating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
                   ))}
                 </div>
-                {googleRating
-                  ? `${displayRating.toFixed(1)} on Google (${googleRating.total_ratings} reviews)`
-                  : "5.0 · Google Reviews"}
+                {googleRating.rating.toFixed(1)} on Google ({googleRating.total_ratings} reviews)
               </span>
+            )}
           </div>
           <div className="flex items-start gap-10 text-sm">
             <div>
