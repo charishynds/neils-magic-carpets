@@ -42,7 +42,12 @@ export default function Testimonials() {
           <h2 className="font-display text-4xl lg:text-5xl font-medium text-gray-900">What customers say</h2>
         </AnimateIn>
 
-        <div className="relative min-h-[260px]">
+        <div
+          className="relative min-h-[260px]"
+          onPointerDown={(e) => { if (e.pointerType === 'touch') setPaused(true); }}
+          onPointerUp={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
+          onPointerCancel={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
+        >
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={index}
@@ -59,9 +64,6 @@ export default function Testimonials() {
               className="max-w-3xl"
               onPointerEnter={(e) => { if (e.pointerType === 'mouse') setPaused(true); }}
               onPointerLeave={(e) => { if (e.pointerType === 'mouse') { delayRef.current = 2000; setPaused(false); } }}
-              onPointerDown={(e) => { if (e.pointerType === 'touch') setPaused(true); }}
-              onPointerUp={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
-              onPointerCancel={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
             >
               <div className="font-display text-[96px] leading-none text-green/20 select-none -mb-8">&ldquo;</div>
               <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-800 leading-[1.3]">
