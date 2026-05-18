@@ -35,9 +35,9 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] `.env` and `.env.*` are ignored (confirmed in `.gitignore`).
 - [x] `.env.example` is tracked with safe placeholders.
 - [x] Frontend Supabase variable names documented: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`.
-- [ ] Confirm Vercel Preview environment variables are configured.
-- [ ] Confirm Vercel Production environment variables are configured.
-- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp and Google Places when those functions are deployed.
+- [x] Confirm Vercel Preview environment variables are configured.
+- [x] Confirm Vercel Production environment variables are configured.
+- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp when that function is deployed (Google Places secrets already set).
 
 ## Infrastructure
 
@@ -49,19 +49,19 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 
 ## Supabase
 
-- [x] Create new Supabase project in your org via the dashboard — done. Note the Project Ref, URL, and anon key for linking.
-- [ ] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Preview + Production).
-- [ ] Link repo to Supabase project: `supabase link --project-ref <ref>`.
+- [x] Create new Supabase project in your org via the dashboard — project ref `fxraygkweckkxkfxfrsh`.
+- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Production and Preview).
+- [x] Link repo to Supabase project: `supabase link --project-ref fxraygkweckkxkfxfrsh`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
 - [ ] Confirm database constraints match front-end validation (react-hook-form + zod).
 - [x] Google Rating Badge: Google Place ID confirmed — `ChIJxxYBUDOyUGQRPTrKTXzsZls` (verified: 5.0 rating, 9 reviews, phone 07984 147403 matches). Uses Places API (New) — SAB with hidden address, not findable via legacy Places API.
 - [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
-- [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
+- [x] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
 - [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
-- [ ] Google Rating Badge: deploy `get-google-rating` — link Supabase project first, then `supabase functions deploy get-google-rating`.
-- [ ] Confirm Preview and Production environments use the intended Supabase project.
+- [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh`.
+- [x] Confirm Preview and Production environments use the intended Supabase project (`fxraygkweckkxkfxfrsh`).
 
 ## Vercel And Hosting
 
