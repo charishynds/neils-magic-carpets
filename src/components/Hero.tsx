@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 
 export default function Hero() {
   const [logoDuration, setLogoDuration] = useState(1.6);
@@ -60,6 +60,22 @@ export default function Hero() {
           >
             Fitted Right.<br />Every Time.
           </motion.h1>
+        </div>
+
+        <div className="overflow-hidden">
+          <motion.div
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+            className="flex items-center gap-2 mt-2"
+          >
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} size={14} className="fill-rose text-rose" />
+              ))}
+            </div>
+            <span className="text-white/75 text-xs font-medium tracking-wide">5.0 · Google Reviews</span>
+          </motion.div>
         </div>
       </div>
 

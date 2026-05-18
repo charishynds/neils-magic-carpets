@@ -46,14 +46,16 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
 - [ ] Confirm database constraints match front-end validation (react-hook-form + zod).
-- [ ] Google Rating Badge: find the Google Place ID for Neil's Magic Carpets, Forest Hill SE23 using the Place ID Finder.
-- [ ] Google Rating Badge: Neil to create or reuse a Google Cloud project with Places API (Legacy) enabled, generate a restricted API key, and share it securely.
-- [ ] Google Rating Badge: once both values are available, add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` as Supabase Edge Function secrets. No code changes needed until then.
+- [x] Google Rating Badge: Google Place ID confirmed — `ChIJxxYBUDOyUGQRPTrKTXzsZls` (verified: 5.0 rating, 9 reviews, phone 07984 147403 matches). Uses Places API (New) — SAB with hidden address, not findable via legacy Places API.
+- [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
+- [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
+- [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
+- [ ] Google Rating Badge: deploy `get-google-rating` — link Supabase project first, then `supabase functions deploy get-google-rating`.
 - [ ] Confirm Preview and Production environments use the intended Supabase project.
 
 ## Vercel And Hosting
 
-- [ ] Add `vercel.json` with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) and SPA fallback rewrite before launch.
+- [x] `vercel.json` added with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) and SPA fallback rewrite.
 - [ ] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets-1.git`.
 - [ ] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
 - [ ] Confirm production deploys come from merges to `main`.
@@ -125,7 +127,6 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 
 - [ ] **Sanity CMS integration** — carried forward from old site plan. Phase 1: install packages, create schemas, set up Studio. Phase 2: populate content (testimonials, services, gallery photos, site settings). Phase 3: migrate components one at a time. First question: does Neil have a Sanity account, or does one need to be created?
 - [ ] **Wordmark and logo update** — awaiting new asset files from Neil. Drop-in replacement into `Navigation.tsx` (wordmark) and `Footer.tsx`. Current file names: `/neilsmagiccarpets-logo-black.png` and `/neils_magic_carpets_wordmark_black_white.svg`.
-- [ ] **`prefers-reduced-motion` support** — audit `AnimateIn.tsx` and all direct Framer Motion usage; add a reduced-motion variant or disable animations entirely when the user preference is set.
 
 ## Deferred Improvements
 

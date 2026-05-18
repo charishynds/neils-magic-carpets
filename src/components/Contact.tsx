@@ -105,16 +105,16 @@ export default function Contact() {
               Forest Hill, London &nbsp;·&nbsp; Serving London &amp; the South East
             </span>
             <span>Free, no-obligation quotes</span>
-            {googleRating && (
-              <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5">
                 <div className="flex gap-0.5">
                   {[1,2,3,4,5].map((s) => (
                     <Star key={s} size={12} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
                   ))}
                 </div>
-                {displayRating.toFixed(1)} on Google ({googleRating.total_ratings} reviews)
+                {googleRating
+                  ? `${displayRating.toFixed(1)} on Google (${googleRating.total_ratings} reviews)`
+                  : "5.0 · Google Reviews"}
               </span>
-            )}
           </div>
           <div className="flex items-start gap-10 text-sm">
             <div>
