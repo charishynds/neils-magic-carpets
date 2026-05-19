@@ -24,7 +24,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 
 ## Development Workflow
 
-- [x] React, Vite, TypeScript, Tailwind CSS, Framer Motion, Supabase, npm, and Vercel stack.
+- [x] React, Vite, TypeScript, Tailwind CSS, Framer Motion, Supabase, Sanity, npm, and Vercel stack.
 - [x] Default local preview command is `npm run dev -- --host 0.0.0.0 --port 5173`.
 - [ ] Create a feature/chore branch before the next meaningful change is pushed.
 - [x] GitHub repository default branch confirmed and set to `main`.
@@ -76,7 +76,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 ## SEO And Launch Basics
 
 - [x] Page title and meta description present.
-- [x] Open Graph and Twitter metadata present (Open Graph only — Twitter Card tags still missing).
+- [x] Open Graph and Twitter Card metadata present.
 - [x] Favicon present (`neils_magic_carpets_favicon.svg`).
 - [ ] Favicon review — confirm the current SVG favicon looks correct in browser tabs and bookmarks on both light and dark OS themes. Update if Neil supplies a new brand asset.
 - [x] `robots.txt` present.
@@ -140,7 +140,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 ## Decisions Required (Before Launch)
 
 - [ ] **Contact form** — Neil is undecided. Decision needed before launch. **Remove:** delete form UI from `Contact.tsx`, remove Supabase lead insertion logic, simplify to contact details + WhatsApp CTA only. Reduces GDPR obligations (no privacy policy needed, no `send-whatsapp` setup). **Keep:** requires privacy policy page, `send-whatsapp` Supabase edge function deployed and configured with WhatsApp Cloud API credentials, and end-to-end form test (Supabase insert + WhatsApp notification). Supabase migrations also needed.
-- [ ] **Supabase project** — confirm whether to reuse the existing project from the old site or create a new one for this repo.
+- [x] **Supabase project** — new project created (`fxraygkweckkxkfxfrsh`) rather than reusing the old site's project.
 
 ## Feature Backlog
 
